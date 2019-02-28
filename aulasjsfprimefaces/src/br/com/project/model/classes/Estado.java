@@ -60,4 +60,69 @@ public class Estado implements Serializable {
 	@ForeignKey(name = "pais_fk")
 	private Pais pais = new Pais();
 
+	public Long getEstado_id() {
+		return estado_id;
+	}
+
+	public void setEstado_id(Long estado_id) {
+		this.estado_id = estado_id;
+	}
+
+	public String getEstado_descricao() {
+		return estado_descricao;
+	}
+
+	public void setEstado_descricao(String estado_descricao) {
+		this.estado_descricao = estado_descricao;
+	}
+
+	public String getEstado_uf() {
+		return estado_uf;
+	}
+
+	public void setEstado_uf(String estado_uf) {
+		this.estado_uf = estado_uf;
+	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((estado_id == null) ? 0 : estado_id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Estado other = (Estado) obj;
+		if (estado_id == null) {
+			if (other.estado_id != null)
+				return false;
+		} else if (!estado_id.equals(other.estado_id))
+			return false;
+		return true;
+	}
+
 }

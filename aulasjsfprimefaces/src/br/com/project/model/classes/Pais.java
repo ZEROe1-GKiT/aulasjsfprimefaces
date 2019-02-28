@@ -30,10 +30,10 @@ public class Pais implements Serializable {
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "pais_nome", principal = 1)
 	@Column(nullable = false, length = 80)
-	private Long pais_nome;
+	private String pais_nome;
 
 	@Column(nullable = true, length = 15)
-	private Long pais_sigla;
+	private String pais_sigla;
 
 	@Version
 	@Column(name = "versionNum")
@@ -47,19 +47,19 @@ public class Pais implements Serializable {
 		this.pais_id = pais_id;
 	}
 
-	public Long getPais_nome() {
+	public String getPais_nome() {
 		return pais_nome;
 	}
 
-	public void setPais_nome(Long pais_nome) {
+	public void setPais_nome(String pais_nome) {
 		this.pais_nome = pais_nome;
 	}
 
-	public Long getPais_sigla() {
+	public String getPais_sigla() {
 		return pais_sigla;
 	}
 
-	public void setPais_sigla(Long pais_sigla) {
+	public void setPais_sigla(String pais_sigla) {
 		this.pais_sigla = pais_sigla;
 	}
 
