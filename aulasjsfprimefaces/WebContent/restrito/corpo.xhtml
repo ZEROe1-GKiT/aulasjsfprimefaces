@@ -3,11 +3,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
-
+	<ui:define name="corpo">
+		<h:form id="formCorpo">
+			<p:panel header="Cadastros" id="panelCadastro">
+				<h:panelGrid id="gridCadastros" columns="4">
+					<h:graphicImage library="img" name="2.png" styleClass="semBorda">Grupo</h:graphicImage>
+					<h:graphicImage library="img" name="3.png" styleClass="semBorda">Pessoa</h:graphicImage>
+					<h:graphicImage library="img" name="4.png" styleClass="semBorda">Equipamento</h:graphicImage>
+					<h:graphicImage library="img" name="5.png" styleClass="semBorda">Filial</h:graphicImage>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
 </ui:composition>
+
 
 </html>

@@ -3,7 +3,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
 	xmlns:p="http://primefaces.org/ui">
 
 <sec:isAuthenticated>
@@ -51,7 +53,7 @@
 				$.noConflict();
 
 				localeData_pt_br();
-				
+
 				initTemplate();
 
 				ocultaMenu();
@@ -105,9 +107,8 @@
 				<div id="menu">
 					<span id="iniciarmenu"> <h:graphicImage library="img"
 							name="iconemenu.png" styleClass="semBorda" id="iconemenu">
-				Menu
-				</h:graphicImage>
-
+							Menu
+						</h:graphicImage>
 					</span>
 
 				</div>
@@ -139,6 +140,18 @@
 			<div id="barramenu">
 				<p:tieredMenu id="menuEsquerdo"
 					style="width: 185px; border: none; background: none; color: #000;">
+
+					<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
+
+						<p:submenu label="Cadastros" id="subMenuCadastro">
+							<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
+								<p:menuitem value="Cidade" id="menuCidade"
+									onclick="redirecionarPagina('#{request.contextPath}', '/cadastro/cad_cidade');"
+									ajax="true" />
+							</sec:ifAnyGranted>
+						</p:submenu>
+
+					</sec:ifAnyGranted>
 
 					<p:menuitem
 						onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');"
