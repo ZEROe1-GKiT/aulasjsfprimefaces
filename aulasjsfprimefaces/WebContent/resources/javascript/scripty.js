@@ -1,6 +1,6 @@
 var arrayIdsElementsPage = new Array;
 
-function carregarIdElementosPgina() {
+function carregarIdElementosPagina() {
 	arrayIdsElementsPage = new Array;
 	for (form = 0; form <= document.forms.length; form++) {
 		var formAtual = document.forms[form];
@@ -72,14 +72,18 @@ function initTemplate() {
 				ocultaMenu();
 			} else {
 				$('#barramenu').show();
-				$('#barramenu').animate({"left":"0px"}, "slow");
+				$('#barramenu').animate({
+					"left" : "0px"
+				}, "slow");
 			}
 		});
 	});
 }
 
 function ocultaMenu() {
-	$('#barramenu').animate({"left" : "-200px"}, "slow", function() {
+	$('#barramenu').animate({
+		"left" : "-200px"
+	}, "slow", function() {
 		$('#barramenu').hide();
 	});
 }
@@ -141,4 +145,37 @@ function localeData_pt_br() {
 		day : 'Dia',
 		allDayText : 'Todo o Dia',
 	};
+
+	function addFocoAoCampo(campo) {
+		var id = getValorElementPorId(campo);
+
+		if (id != undefined) {
+			document.getElementById(id).focus();
+		}
+	}
+
+	function gerenciaTeclaEnter() {
+		
+		$(document).ready(function() {
+			$('input').keypress(function(e) {
+				var code = null;
+				code = (e.keyCode ? e.keyCode : e.which);
+				return (code === 13) ? false : true;
+			});
+
+			$('input[type=text]').keydown(function(e) {
+				var next_idx = $('input[type=text]').index(this) + 1;
+				var tot_idx = $('body').find('input[type=text]').length;
+
+				if (e.keyCode === 13) {
+					if (tot_idx === next_idx)
+						$('input[type=text]:eq(0)').focus();
+					else
+						$('input[type=text]:eq(' + next_idx + ')').focus();
+				}
+
+			});
+		});
+	}
+
 }

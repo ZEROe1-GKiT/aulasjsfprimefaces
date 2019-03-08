@@ -7,7 +7,7 @@ public class Constante implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public static final String SUCESSO = "sucesso";
-	public static final String OPERACAO_REALIZADA_COM_SUCESSO = "Operação Realizada com Sucesso.";
-	public static final String ERRO_NA_OPERACAO = "Não foi Possível Executar a Operação";
+	public static final String OPERACAO_REALIZADA_COM_SUCESSO = "OperaÃ§Ã£o Realizada com Sucesso.";
+	public static final String ERRO_NA_OPERACAO = "NÃ£o foi PossÃ­vel Executar a OperaÃ§Ã£o";
 
 }

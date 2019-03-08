@@ -8,7 +8,7 @@ import java.util.List;
 public enum Permissao {
 
 	ADMIN("ADMIN","Administrador"),
-	USER("USER","Usu·rio Padr„o"),
+	USER("USER","Usu√°rio Padr√£o"),
 	CADASTRO_ACESSAR("CADASTRO_ACESSAR","Cadastro - Acessar"),
 	FINANCEIRO_ACESSAR("FINANCEIRO_ACESSAR", "Financeiro - Acessar"),
 	MENSAGEM_ACESSAR("MENSAGEM_ACESSAR","Mensagem recebida - Acessar"),
