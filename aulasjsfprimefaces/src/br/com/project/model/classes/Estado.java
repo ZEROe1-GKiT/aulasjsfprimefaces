@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -23,9 +24,9 @@ import org.hibernate.annotations.ForeignKey;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
-import com.sun.istack.internal.NotNull;
-
 import br.com.project.annotation.IdentificaCampoPesquisa;
+
+import com.sun.istack.internal.NotNull;
 
 @Audited
 @Entity
@@ -40,17 +41,17 @@ public class Estado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado_seq")
 	private Long estado_id;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "estado_descricao", principal = 1)
-	@Column(nullable = false, length = 80)
-	private String estado_descricao;
-
 	@Column(length = 10, nullable = true)
 	private String estado_uf;
 
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "estado_descricao", principal = 1)
+	@Column(length = 100, nullable = false)
+	private String estado_descricao;
+
 	@NotAudited
 	@OneToMany(mappedBy = "estado", orphanRemoval = false)
-	@Cascade(value = { org.hibernate.annotations.CascadeType.SAVE_UPDATE, CascadeType.PERSIST, CascadeType.MERGE,
-			CascadeType.REFRESH })
+	@Cascade(value = { org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+			CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	private List<Cidade> cidades = new ArrayList<Cidade>();
 
 	@Basic
@@ -60,28 +61,32 @@ public class Estado implements Serializable {
 	@ForeignKey(name = "pais_fk")
 	private Pais pais = new Pais();
 
-	public Long getEstado_id() {
+	@Version
+	@Column(name = "versionNum")
+	private int versionNum;
+
+	public Long getestado_id() {
 		return estado_id;
 	}
 
-	public void setEstado_id(Long estado_id) {
+	public void setestado_id(Long estado_id) {
 		this.estado_id = estado_id;
 	}
 
-	public String getEstado_descricao() {
-		return estado_descricao;
-	}
-
-	public void setEstado_descricao(String estado_descricao) {
-		this.estado_descricao = estado_descricao;
-	}
-
-	public String getEstado_uf() {
+	public String getestado_uf() {
 		return estado_uf;
 	}
 
-	public void setEstado_uf(String estado_uf) {
+	public void setestado_uf(String estado_uf) {
 		this.estado_uf = estado_uf;
+	}
+
+	public String getestado_descricao() {
+		return estado_descricao;
+	}
+
+	public void setestado_descricao(String estado_descricao) {
+		this.estado_descricao = estado_descricao;
 	}
 
 	public List<Cidade> getCidades() {
@@ -98,6 +103,14 @@ public class Estado implements Serializable {
 
 	public void setPais(Pais pais) {
 		this.pais = pais;
+	}
+
+	public int getVersionNum() {
+		return versionNum;
+	}
+
+	public void setVersionNum(int versionNum) {
+		this.versionNum = versionNum;
 	}
 
 	@Override

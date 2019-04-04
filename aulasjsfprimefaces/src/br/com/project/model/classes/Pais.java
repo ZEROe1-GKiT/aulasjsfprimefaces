@@ -39,27 +39,27 @@ public class Pais implements Serializable {
 	@Column(name = "versionNum")
 	private int versionNum;
 
-	public Long getPais_id() {
+	public Long getpais_id() {
 		return pais_id;
 	}
 
-	public void setPais_id(Long pais_id) {
+	public void setpais_id(Long pais_id) {
 		this.pais_id = pais_id;
 	}
 
-	public String getPais_nome() {
+	public String getpais_nome() {
 		return pais_nome;
 	}
 
-	public void setPais_nome(String pais_nome) {
+	public void setpais_nome(String pais_nome) {
 		this.pais_nome = pais_nome;
 	}
 
-	public String getPais_sigla() {
+	public String getpais_sigla() {
 		return pais_sigla;
 	}
 
-	public void setPais_sigla(String pais_sigla) {
+	public void setpais_sigla(String pais_sigla) {
 		this.pais_sigla = pais_sigla;
 	}
 

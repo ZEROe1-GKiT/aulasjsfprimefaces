@@ -10,13 +10,12 @@ import br.com.srv.interfaces.SrvLogin;
 public class SrvLoginImpl implements SrvLogin {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Autowired
 	private RepositoryLogin repositoryLogin;
 
 	@Override
 	public boolean autentico(String login, String senha) throws Exception {
-
 		return repositoryLogin.autentico(login, senha);
 	}
 

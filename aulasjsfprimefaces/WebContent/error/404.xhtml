@@ -4,18 +4,19 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title><ui:insert name="titulo">Página Não Encontrata</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html/ charset=UTF-8" />
+	<title><ui:insert name="titulo">GKiT</ui:insert></title>
 </h:head>
 
 <h:form>
 	<h:body>
-		<p:panel id="panelNotAcess" header="Aviso">
-			<h:graphicImage library="img" name="404.png" />
-
-		</p:panel>
-
+		 <p:panel id="panelPageNotFound" header="Aviso">
+		 		<h:graphicImage library="img" name="page_not_found.jpeg">
+		 			<h:outputLabel value="Página não foi encontrada." />
+		 		</h:graphicImage>
+		 </p:panel>
 	</h:body>
 </h:form>
 </html>

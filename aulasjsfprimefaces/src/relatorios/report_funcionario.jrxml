@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_funcionario" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5a9ef206-ed98-44fe-af45-2c1684c61b1b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\workspace\\aulasjsfprimefaces\\src\\relatorios\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[email]]></fieldDescription>
+	</field>
+	<field name="ent_nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_nomeFantasia]]></fieldDescription>
+	</field>
+	<field name="tipoEntidade" class="java.lang.String">
+		<fieldDescription><![CDATA[tipoEntidade]]></fieldDescription>
+	</field>
+	<field name="acessosPermissao" class="java.util.Set">
+		<fieldDescription><![CDATA[acessosPermissao]]></fieldDescription>
+	</field>
+	<group name="Grupo usuários acessos">
+		<groupExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{acessosPermissao})]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<staticText>
+					<reportElement x="221" y="0" width="29" height="20" uuid="539287b2-8ff2-4bbd-9d03-1bdd158833a8"/>
+					<textElement>
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Email]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="435" y="0" width="24" height="20" uuid="ea4a8c48-f073-49ca-834f-ff8a7cb50e97"/>
+					<textElement>
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Tipo]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="250" y="0" width="185" height="20" uuid="6c7bde96-a77e-4f17-bd12-fe934bffadb8"/>
+					<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="30" y="0" width="191" height="20" uuid="c7ffdd69-4adb-468a-8b5b-8fe2f66426e2"/>
+					<textFieldExpression><![CDATA[$F{ent_nomeFantasia}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="459" y="0" width="95" height="20" uuid="20bd2f0e-9650-4bad-8db3-90937921f1c6"/>
+					<textFieldExpression><![CDATA[$F{tipoEntidade}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="30" height="20" uuid="3d0e79bc-f97c-4666-a255-34d8a9a25d2a"/>
+					<textElement>
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Nome]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="151" y="10" width="404" height="55" uuid="42b8f6f3-b25c-4207-8ba4-a3ff58b618a3"/>
+				<textElement>
+					<font size="32"/>
+				</textElement>
+				<text><![CDATA[Relatório de Funcionários]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="10" width="127" height="55" uuid="11b30c5e-10b8-41bf-a15f-cd51d8c983b2"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG} + "icones-quemsomos3.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="70" width="555" height="1" uuid="42ee3ff7-851c-4c65-ac63-41036ed0db32"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="16" uuid="b5cf0816-19ed-449b-bffb-a5c77551105d"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{acessosPermissao})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report_funcionario_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="330" y="4" width="225" height="20" uuid="8bffe9b6-a706-42ac-977c-18f32eef071f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" uuid="9d37143e-8a09-4973-ad45-82503de9664f"/>
+			</line>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="20">
+			<staticText>
+				<reportElement x="169" y="0" width="218" height="20" uuid="8cd457fe-b8d5-4d64-8b32-f407da9fe3ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Não há dados a serem exibidos]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

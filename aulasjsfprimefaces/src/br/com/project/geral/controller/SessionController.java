@@ -6,10 +6,10 @@ import javax.faces.bean.ApplicationScoped;
 import javax.servlet.http.HttpSession;
 
 @ApplicationScoped
-public interface SessionController extends Serializable {
-
+public interface SessionController  extends Serializable{
+	
 	void addSession(String keyLoginUser, HttpSession httpSession);
-
-	void invalidateSession(String KeyLoginUser);
+	
+	void invalidateSession(String keyLoginUser);
 
 }

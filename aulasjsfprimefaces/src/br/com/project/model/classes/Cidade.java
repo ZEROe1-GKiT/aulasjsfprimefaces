@@ -19,47 +19,52 @@ import org.hibernate.envers.Audited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
+
 @Audited
 @Entity
 @Table(name = "cidade")
-@SequenceGenerator(name = "cidade_seq", sequenceName = "cidade_seq", initialValue = 1, allocationSize = 1)
-public class Cidade implements Serializable {
-
+@SequenceGenerator(name = "cidade_seq", 
+sequenceName = "cidade_seq", initialValue = 1, allocationSize = 1)
+public class Cidade implements Serializable{
+	
+	
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "cidade_id")
+	
+	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "cidade_id", principal = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cidade_seq")
 	private Long cidade_id;
-
-	@IdentificaCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "cidade_descricao", principal = 1)
-	@Column(nullable = false, length = 100)
+	
+	
+	@IdentificaCampoPesquisa(descricaoCampo = "Descrição", campoConsulta = "cidade_descricao", principal = 2)
+	@Column(length = 100, nullable = false)
 	private String cidade_descricao;
-
-	@IdentificaCampoPesquisa(descricaoCampo = "Estado", campoConsulta = "estado.estado_descricao", principal = 1)
+	
+	@IdentificaCampoPesquisa(descricaoCampo = "Estado", campoConsulta = "estado.est_nome")
 	@Basic
 	@ManyToOne
 	@JoinColumn(name = "estado", nullable = false)
 	@ForeignKey(name = "estado_fk")
 	private Estado estado = new Estado();
-
+	
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
 
-	public Long getCidade_id() {
+	public Long getcidade_id() {
 		return cidade_id;
 	}
 
-	public void setCidade_id(Long cidade_id) {
+	public void setcidade_id(Long cidade_id) {
 		this.cidade_id = cidade_id;
 	}
 
-	public String getCidade_descricao() {
+	public String getcidade_descricao() {
 		return cidade_descricao;
 	}
 
-	public void setCidade_descricao(String cidade_descricao) {
+	public void setcidade_descricao(String cidade_descricao) {
 		this.cidade_descricao = cidade_descricao;
 	}
 
@@ -83,7 +88,8 @@ public class Cidade implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cidade_id == null) ? 0 : cidade_id.hashCode());
+		result = prime * result
+				+ ((cidade_id == null) ? 0 : cidade_id.hashCode());
 		return result;
 	}
 
@@ -106,7 +112,10 @@ public class Cidade implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cidade [cidade_id=" + cidade_id + ", cidade_descricao=" + cidade_descricao + "]";
+		return "Cidade [cidade_id=" + cidade_id + ", cidade_descricao="
+				+ cidade_descricao + "]";
 	}
+	
+	
 
 }

@@ -4,17 +4,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title><ui:insert name="titulo">Página Não Encontrada</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html/ charset=UTF-8" />
+	<title><ui:insert name="titulo">Caixaki</ui:insert></title>
 </h:head>
 
 <h:form>
 	<h:body>
-		<p:panel id="panelNotAcess" header="Aviso">
-			<h:graphicImage library="img" name="404.png" />
-		</p:panel>
-
+		 <p:panel id="panelPageNotFound" header="Aviso">
+		 		<h:graphicImage library="img" name="page_not_found.jpeg">
+		 			<h:outputLabel value="O acesso a está página não foi encontrado, 
+		 			confira o endereço informado e verifique a url." />
+		 		</h:graphicImage>
+		 </p:panel>
 	</h:body>
 </h:form>
 </html>

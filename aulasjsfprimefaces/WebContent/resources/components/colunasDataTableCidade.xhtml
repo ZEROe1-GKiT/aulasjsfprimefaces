@@ -9,91 +9,85 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-			<p:column style="width: 100px;">
-				<center>
 
-					<f:facet name="header">Código</f:facet>
-					<h:outputText value="#{objeto.cidade_id}" />
+<p:column style="width:100px;">
+	<center>
+		<f:facet name="header">Código</f:facet>
+		<h:outputText value="#{objeto.cidade_id}" />
+	</center>
+</p:column>
 
-				</center>
 
-			</p:column>
+<p:column>
+	<center>
+		<f:facet name="header">Nome</f:facet>
+		<h:outputText value="#{objeto.cidade_descricao}" id="nome" />
+	</center>
+</p:column>
 
-			<p:column>
-				<center>
 
-					<f:facet name="header">Nome</f:facet>
-					<h:outputText value="#{objeto.cidade_descricao}" />
+<p:column style="width:400px;">
+	<center>
+		<f:facet name="header">Estado</f:facet>
+		<h:outputText value="#{objeto.estado.estado_descricao}" />
+	</center>
+</p:column>
 
-				</center>
+<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
 
-			</p:column>
 
-			<p:column style="width: 200px;">
-				<center>
+	<p:column style="width:50px;">
+		<center>
+			<f:facet name="header">Excluir</f:facet>
+			<c:choose>
 
-					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{objeto.estado.estado_descricao}" />
+				<c:when test="${isCadastro == false}">
 
-				</center>
+					<p:commandLink action="#{cidadeBeanView.excluir}"
+						update="tableResult" id="excluirCidade" ajax="true"
+						immediate="true"
+						onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.cidade_descricao}?')) return false;">
+						<h:graphicImage library="img" name="excluir16.png" />
+						<f:setPropertyActionListener
+							target="#{cidadeBeanView.objetoSelecionado}" value="#{objeto}" />
+					</p:commandLink>
 
-			</p:column>
+				</c:when>
 
-			<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
-				<p:column style="width: 50px;">
-					<center>
+				<c:otherwise>
+					<p:commandLink action="#{cidadeBeanView.excluir}"
+						update="tableResult" id="excluirCidade" ajax="false"
+						immediate="true"
+						onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.cidade_descricao}?')) return false;">
+						<h:graphicImage library="img" name="excluir16.png" />
+						<f:setPropertyActionListener
+							target="#{cidadeBeanView.objetoSelecionado}" value="#{objeto}" />
+					</p:commandLink>
+				</c:otherwise>
 
-						<f:facet name="header">Editar</f:facet>
-						<p:commandLink action="#{cidadeBeanView.editar}"
-							update="formCadastro" id="editarCidade" ajax="false"
-							immediate="true" oncomplete="addFocoAoCampo('cidadeNome');">
-							<h:graphicImage library="img" name="editar16.png"
-								style="height: 18px; width: 18px; border: 0px;"
-								styleClass="semBorda" />
-							<f:setPropertyActionListener value="#{objeto}"
-								target="#{cidadeBeanView.objetoSelecionado}" />
-						</p:commandLink>
-					</center>
+			</c:choose>
 
-				</p:column>
-			</sec:ifAnyGranted>
+		</center>
+	</p:column>
 
-			<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
-				<p:column style="width: 50px;">
-					<center>
+</sec:ifAnyGranted>
 
-						<f:facet name="header">Excluir</f:facet>
+<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
+	<p:column style="width:50px;">
+		<center>
+			<f:facet name="header">Editar</f:facet>
+			<p:commandLink action="#{cidadeBeanView.editar}" update="@form"
+				id="editarCidade" ajax="true" immediate="true"
+				oncomplete="addFocoCampo('cidadeNome');">
 
-						<c:choose>
-							<c:when test="${isCadastro == false}">
-								<p:commandLink action="#{cidadeBeanView.excluir}"
-									update="tableResult" id="excluirCidade" ajax="true"
-									immediate="true"
-									onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.cidade_descricao} ?')) return false;">
-									<h:graphicImage library="img" name="excluir16.png"
-										style="height: 18px; width: 18px; border: 0px;"
-										styleClass="semBorda" />
-									<f:setPropertyActionListener value="#{objeto}"
-										target="#{cidadeBeanView.objetoSelecionado}" />
-								</p:commandLink>
-							</c:when>
-							<c:otherwise>
-								<p:commandLink action="#{cidadeBeanView.excluir}"
-									update="tableResult" id="excluirCidade" ajax="false"
-									immediate="true"
-									onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.cidade_descricao} ?')) return false;">
-									<h:graphicImage library="img" name="excluir16.png"
-										style="height: 18px; width: 18px; border: 0px;"
-										styleClass="semBorda" />
-									<f:setPropertyActionListener value="#{objeto}"
-										target="#{cidadeBeanView.objetoSelecionado}" />
-								</p:commandLink>
-							</c:otherwise>
-						</c:choose>
+				<h:graphicImage library="img" name="editar16.png" />
+				<f:setPropertyActionListener
+					target="#{cidadeBeanView.objetoSelecionado}" value="#{objeto}" />
 
-					</center>
+			</p:commandLink>
+		</center>
+	</p:column>
+</sec:ifAnyGranted>
 
-				</p:column>
-			</sec:ifAnyGranted>
 
 </html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="default" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13525b47-44a2-4eb3-a7fa-26862514ef64">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="243" height="30" uuid="e40c1246-c4c8-4f7e-8b8c-21231b52e1c2"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Relatório não disponível]]></text>
+			</staticText>
+			<image>
+				<reportElement x="243" y="12" width="312" height="50" uuid="69b41250-23b1-44b0-9d44-3dba6b1d6189"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG} + "icones-quemsomos3.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="348" y="0" width="207" height="20" uuid="a4a06388-32bb-497e-85c8-7bcc6267454e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

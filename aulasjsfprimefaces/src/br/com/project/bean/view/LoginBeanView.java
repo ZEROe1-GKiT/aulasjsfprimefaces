@@ -1,5 +1,6 @@
 package br.com.project.bean.view;
 
+import javax.annotation.Resource;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -7,7 +8,6 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.context.RequestContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,52 +26,50 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 
 	private String username;
-
 	private String password;
-
-	@Autowired
+	
+	@Resource
 	private SessionController sessionController;
-
-	@Autowired
+	
+	@Resource
 	private SrvLogin srvLogin;
-
+	
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
 	public void invalidarSessionMetodo(HttpServletRequest httpServletRequest) throws Exception {
-
-		String userLogadoSessao = null;
-		if (httpServletRequest.getUserPrincipal() != null) {
-			userLogadoSessao = httpServletRequest.getUserPrincipal().getName();
+		
+		String useLogadoSessao = null;
+		if (httpServletRequest.getUserPrincipal() != null){
+			useLogadoSessao = httpServletRequest.getUserPrincipal().getName();
 		}
-
-		if (userLogadoSessao == null || (userLogadoSessao != null && userLogadoSessao.trim().isEmpty())) {
-			userLogadoSessao = httpServletRequest.getRemoteUser();
+		
+		if (useLogadoSessao == null || (useLogadoSessao != null && useLogadoSessao.trim().isEmpty())){
+			useLogadoSessao = httpServletRequest.getRemoteUser();
 		}
-
-		if (userLogadoSessao != null && !userLogadoSessao.isEmpty()) {
-			sessionController.invalidateSession(userLogadoSessao);
+		
+		if (useLogadoSessao != null && !useLogadoSessao.isEmpty()){
+			sessionController.invalidateSession(useLogadoSessao);
 		}
-
+		
 	}
+	
 
 	public void invalidar(ActionEvent actionEvent) throws Exception {
-
 		RequestContext context = RequestContext.getCurrentInstance();
 		FacesMessage message = null;
 		boolean loggedIn = false;
-
-		if (srvLogin.autentico(getUsername(), getPassword())) {
+		
+		if (srvLogin.autentico(getUsername(), getPassword())){
 			sessionController.invalidateSession(getUsername());
 			loggedIn = true;
-		} else {
+		}else {
 			loggedIn = false;
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso Negado", "Login ou Senha Incorretos");
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso negado", "Login ou senha incorretos");
 		}
-
-		if (message != null) {
+		
+		if (message != null){
 			FacesContext.getCurrentInstance().addMessage("msg", message);
-
 		}
-
+		
 		context.addCallbackParam("loggedIn", loggedIn);
 	}
 
@@ -91,13 +89,22 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 		this.password = password;
 	}
 
+
 	@Override
 	protected Class<?> getClassImplement() {
 		return null;
 	}
 
+
 	@Override
 	protected InterfaceCrud<?> getController() {
+		return null;
+	}
+
+
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -11,13 +11,13 @@ import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.project.model.classes.Estado;
 
 @FacesConverter(forClass = Estado.class)
-public class EstadoConverter implements Converter, Serializable {
+public class EstadoConverter  implements Converter, Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String codigo) {
-		if (codigo != null && !codigo.isEmpty()) {
+		if (codigo != null && !codigo.isEmpty()){
 			return (Estado) HibernateUtil.getCurrentSession().get(Estado.class, new Long(codigo));
 		}
 		return codigo;
@@ -25,9 +25,9 @@ public class EstadoConverter implements Converter, Serializable {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object objeto) {
-		if (objeto != null) {
+		if (objeto != null){
 			Estado c = (Estado) objeto;
-			return c.getEstado_id() != null && c.getEstado_id() > 0 ? c.getEstado_id().toString() : null;
+			return c.getestado_id() != null && c.getestado_id() > 0 ? c.getestado_id().toString() : null;
 		}
 		return null;
 	}

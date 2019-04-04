@@ -23,57 +23,60 @@ public class ContextoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final String USER_LOGADO_SESSAO = "userLogadoSessao";
-
+	
 	@Autowired
 	private EntidadeController entidadeController;
-
-	@Autowired
+	
+	@Autowired 
 	private SessionController sessionController;
 
-	public Authentication getAuthentication() {
+	/**
+	 * Retorna todas as informações do usuário logado
+	 * @return Authentication
+	 */
+	public Authentication getAuthentication(){
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
 
-	public Entidade getEntidadeLogada() throws Exception {
-
+	public Entidade getEntidadeLogada() throws Exception{
 		Entidade entidade = (Entidade) getExternalContext().getSessionMap().get(USER_LOGADO_SESSAO);
-
-		if (entidade == null || (entidade != null && !entidade.getEnt_login().equals(getUserPrincipal()))) {
-
-			if (getAuthentication().isAuthenticated()) {
+		
+		if (entidade == null || (entidade != null &&
+				!entidade.getEnt_login().equals(getUserPrincipal()))){
+			
+			if (getAuthentication().isAuthenticated()){
 				entidadeController.updateUltimoAcessoUser(getAuthentication().getName());
 				entidade = entidadeController.findUserLogado(getAuthentication().getName());
-				getExternalContext().getSessionMap().put(USER_LOGADO_SESSAO, entidade);
+				getExternalContext().getSessionMap().put(USER_LOGADO_SESSAO, entidade);		
 				sessionController.addSession(entidade.getEnt_login(),
 						(HttpSession) getExternalContext().getSession(true));
 			}
-
 		}
-
 		return entidade;
 	}
-
+	
+	
 	private String getUserPrincipal() {
 		return getExternalContext().getUserPrincipal().getName();
 	}
 
 	public ExternalContext getExternalContext() {
-
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
 		return externalContext;
 	}
-
+	
+	
 	public boolean possuiAcesso(String... acessos) {
-
+		
 		for (String acesso : acessos) {
-			for (GrantedAuthority authority : getAuthentication().getAuthorities()) {
-				if (authority.getAuthority().trim().equals(acesso.trim())) {
+			for (GrantedAuthority authority: getAuthentication().getAuthorities()){
+				if (authority.getAuthority().trim().equals(acesso.trim())){
 					return true;
 				}
 			}
 		}
+		
 		return false;
 	}
-
 }

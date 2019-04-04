@@ -3,7 +3,9 @@
 	padding: 0px;
 	font-size: 12px;
 	font-family: arial, helvetic, sans-serif;
+	
 }
+
 
 .buttonPesquisa {
 	height: 20px;
@@ -51,7 +53,7 @@ a:focus {
 	top: 0px;
 	left: 0px;
 	right: 0px;
-	height: 120px;
+	height: 80px;
 	background-color: #F7F6F5;
 }
 
@@ -222,11 +224,6 @@ a:focus {
 	padding-left: 5px;
 }
 
-#logoImg {
-	height: 70px;
-	width: 150px;
-}
-
 #imagemlogin {
 	position: absolute;
 	top: 30px;
@@ -261,15 +258,15 @@ a:focus {
 #dadoslogin {
 	background: #61cded;
 	background-image: -moz-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: -o-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: -ms-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	position: absolute;
 	right: 20px;
 	top: 14px;
@@ -310,15 +307,15 @@ a:focus {
 	padding: 5px 5px 8px 10px;
 	background: #61cded;
 	background-image: -moz-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: -o-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: -ms-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	background-image: linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0));
+		rgba(255, 255, 255, 0) );
 	-moz-box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
 	-webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
 	box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
@@ -390,9 +387,7 @@ input[type=submit] {
 }
 
 .bordaImagem {
-	width: 800px;
-	margin: 0 auto;
-	border: 0px;
+	border: 0;
 }
 
 .semBorda {
@@ -440,7 +435,7 @@ a.ui-menuitem-link.ui-corner-all.ui-state-hover {
 	border-collapse: separate;
 }
 
-.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+.ui-datatable thead th,.ui-datatable tbody td,.ui-datatable tfoot td {
 	-webkit-border-top-right-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	-moz-border-radius-topright: 5px;
@@ -505,7 +500,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	height: 22px;
 }
 
-.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+.ui-datatable thead th,.ui-datatable tbody td,.ui-datatable tfoot td {
 	padding: 2px 2px;
 	overflow: hidden;
 	border-width: 1px;
@@ -513,10 +508,8 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	border-color: white; /*cor das linha nos data table*/
 }
 
-.ui-paginator .ui-paginator-page, .ui-paginator .ui-paginator-pages,
-	.ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-last,
-	.ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-prev,
-	.ui-paginator .ui-paginator-current {
+.ui-paginator .ui-paginator-page,.ui-paginator .ui-paginator-pages,.ui-paginator .ui-paginator-next,.ui-paginator .ui-paginator-last,.ui-paginator .ui-paginator-first,.ui-paginator .ui-paginator-prev,.ui-paginator .ui-paginator-current
+	{
 	display: inline-block;
 	margin-right: 3px;
 	outline: medium none;
@@ -568,7 +561,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	text-indent: -9999999px;
 }
 
-.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield
+.ui-inputfield,.ui-widget-content .ui-inputfield,.ui-widget-header .ui-inputfield
 	{
 	background: #ffffff;
 	-moz-box-shadow: inset 0 1px 1px #8f8f8f;
@@ -577,7 +570,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	color: #000000;
 }
 
-.ui-fieldset, .ui-fieldset .ui-fieldset-legend {
+.ui-fieldset,.ui-fieldset .ui-fieldset-legend {
 	padding: 0.1em 1em;
 }
 
@@ -598,6 +591,6 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	display: none;
 }
 
-.ui-datatable thead th, .ui-datatable tbody td {
-	border: 1px solid white !important;
+.ui-datatable thead th,.ui-datatable tbody td {
+	border: 1px solid white !important; 
 }

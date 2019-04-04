@@ -19,7 +19,7 @@ var pasteEventName = getPasteEvent() + ".mask",
 	caretTimeoutId;
 
 $.mask = {
-	//Predefined character definitions
+	// Predefined character definitions
 	definitions: {
 		'9': "[0-9]",
 		'a': "[A-Za-z]",
@@ -30,7 +30,7 @@ $.mask = {
 };
 
 $.fn.extend({
-	//Helper Function for Caret positioning
+	// Helper Function for Caret positioning
 	caret: function(begin, end) {
 		var range;
 
@@ -174,7 +174,7 @@ $.fn.extend({
 					begin,
 					end;
 
-				//backspace, delete, and escape get special treatment
+				// backspace, delete, and escape get special treatment
 				if (k === 8 || k === 46 || (iPhone && k === 127)) {
 					pos = input.caret();
 					begin = pos.begin;
@@ -188,7 +188,7 @@ $.fn.extend({
 					shiftL(begin, end - 1);
 
 					e.preventDefault();
-				} else if (k == 27) {//escape
+				} else if (k == 27) {// escape
 					input.val(focusText);
 					input.caret(0, checkVal());
 					e.preventDefault();
@@ -202,7 +202,7 @@ $.fn.extend({
 					c,
 					next;
 
-				if (e.ctrlKey || e.altKey || e.metaKey || k < 32) {//Ignore
+				if (e.ctrlKey || e.altKey || e.metaKey || k < 32) {// Ignore
 					return;
 				} else if (k) {
 					if (pos.end - pos.begin !== 0){
@@ -247,7 +247,7 @@ $.fn.extend({
 			function writeBuffer() { input.val(buffer.join('')); }
 
 			function checkVal(allow) {
-				//try to place characters where they belong
+				// try to place characters where they belong
 				var test = input.val(),
 					lastMatch = -1,
 					i,
@@ -329,7 +329,7 @@ $.fn.extend({
 							settings.completed.call(input);
 					}, 0);
 				});
-			checkVal(); //Perform initial check for existing values
+			checkVal(); // Perform initial check for existing values
 		});
 	}
 });

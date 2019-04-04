@@ -13,22 +13,25 @@ import org.hibernate.envers.RevisionEntity;
 
 import br.com.project.listener.CustomListener;
 
+
 @Entity
-@Table(name = "revinfo")
+@Table(name="revinfo")
 @RevisionEntity(CustomListener.class)
-public class InformacaoRevisao extends DefaultRevisionEntity implements Serializable {
+public class InformacaoRevisao extends DefaultRevisionEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@ManyToOne
-	@ForeignKey(name = "entidade_fk")
-	@JoinColumn(nullable = false, name = "entidade")
+	@ForeignKey(name="entidade_fk")
+	@JoinColumn(nullable=false, name="entidade")
 	private Entidade entidade;
 
+	
 	public void setEntidade(Entidade entidade) {
 		this.entidade = entidade;
 	}
-
+	
 	public Entidade getEntidade() {
 		return entidade;
 	}
